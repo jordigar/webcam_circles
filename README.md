@@ -1,4 +1,4 @@
-# webcam_circleis
+# webcam_circles
 Circle detection from online webcam images
 Basically this programa uses the function HoughCircles from OpenCV.
 HoughCircles is a function that detects and returns an output vector of circles, and each vector has 3-element floating-point vector (x, y, radius). The method for detect circles is CV_HOUGH_GRADIENT, but in general the Hough Transform works with the circle equation looking for points that transformed into a circular cone you have all the points lie on a circle, which intersect at a single point that are the circle parameters (a, b, r).
