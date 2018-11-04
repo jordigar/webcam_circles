@@ -16,8 +16,8 @@ const double CANNY_EDGE_TH = 150;
 const double HOUGH_ACCUM_RESOLUTION = 2;
 const double MIN_CIRCLE_DIST = 40;
 const double HOUGH_ACCUM_TH = 70;
-const int MIN_RADIUS = 20;
-const int MAX_RADIUS = 100;
+const int MIN_RADIUS = 10;
+const int MAX_RADIUS = 200;
 
 int main(int argc, char *argv[])
 {
@@ -87,6 +87,11 @@ int main(int argc, char *argv[])
                     radius = cvRound(circles[ii][2]);
                     cv::circle(image, center, 5, cv::Scalar(0,0,255), -1, 8, 0 );// circle center in green
                     cv::circle(image, center, radius, cv::Scalar(0,0,255), 3, 8, 0 );// circle perimeter in red
+                    //add radius to image
+                    cv::line(image, center, cv::Point(center.x + radius, center.y), cv::Scalar(255, 255, 255, 255));
+                    char buffer[256];
+                    sprintf(buffer, "Radius: %f", (double)radius);
+                    cv::putText(image, std::string(buffer), cv::Point(0,32), cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(255,255,255,255));
             }
         }
 
